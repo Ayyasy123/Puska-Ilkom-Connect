@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 const card = () => (
   <View>
-    <Text>Card</Text>
+    <Text>Card Baru</Text>
   </View>
 );
 
