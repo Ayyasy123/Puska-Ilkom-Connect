@@ -1,21 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import SignIn from './app/screens/SignIn';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello</Text>
+  const [loaded] = useFonts({
+    'poppins-regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'poppins-bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    'poppins-semiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+    'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
+    'rubik-regular': require('./assets/fonts/Rubik-Regular.ttf'),
+  });
 
-    </View>
+  if (!loaded) {
+    return (
+      null
+    );
+  }
+
+  return (
+    <SignIn />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
