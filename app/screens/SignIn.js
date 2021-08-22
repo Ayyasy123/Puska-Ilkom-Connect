@@ -168,9 +168,7 @@ const SignIn = () => {
 };
 
 const styles = StyleSheet.create({
-  text: {
 
-  },
 });
 
 export default SignIn;
