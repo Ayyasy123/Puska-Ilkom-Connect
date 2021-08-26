@@ -11,7 +11,7 @@ import global from '../../assets/styles/global';
 
 // import { AuthContext } from '../context';
 
-const SignIn = () => {
+const SignIn = ({ navigation }) => {
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
   //   const { storedUserToken, setStoredUserToken } = useContext(AuthContext);
@@ -115,22 +115,16 @@ const SignIn = () => {
                   value={values.password}
                 />
                 <TouchableOpacity
-                  style={{
-                    position: 'absolute', right: 16, bottom: 10,
-                  }}
+                  style={global.iconInputRight}
                   onPress={() => { setTextShow(!textShow); setIsHide(!isHide); }}
                 >
-                  {textShow === false ? (
-                    <Ionicons name="md-eye-outline" size={24} color="#3C3A36" />
-                  ) : (
-                    <Ionicons name="md-eye-off-outline" size={24} color="#3C3A36" />
-                  )}
+                  <Ionicons name={textShow ? 'md-eye-off-outline' : 'md-eye-outline'} size={24} color="#3C3A36" />
                 </TouchableOpacity>
               </View>
 
-              <TouchableOpacity>
+              <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
                 <Text style={{
-                  ...global.reg12Text, color: '#6B7075', textDecorationLine: 'underline', marginBottom: 30, marginTop: -10,
+                  ...global.reg12Text, color: '#DC4645', textDecorationLine: 'underline', marginBottom: 30, marginTop: -10,
                 }}
                 >
                   Forget Password
@@ -155,10 +149,12 @@ const SignIn = () => {
               </TouchableOpacity>
 
               )}
-              <Text style={{ ...global.med12Text, color: '#130F26', textAlign: 'center' }}>
-                Don't have account?
-                <Text style={{ color: '#7293D5' }}> Sign Up</Text>
-              </Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                <Text style={{ ...global.med12Text, color: '#130F26' }}>Don't have account?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                  <Text style={{ ...global.med12Text, color: '#7293D5' }}> Sign Up</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </Formik>

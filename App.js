@@ -1,9 +1,7 @@
 import React from 'react';
 import { useFonts } from 'expo-font';
-import SignIn from './app/screens/SignIn';
-import SignUp from './app/screens/SignUp';
-import Home from './app/screens/Home';
-import Onboarding from './app/screens/Onboarding';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './app/routes/RootNavigator';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -21,6 +19,8 @@ export default function App() {
   }
 
   return (
-    <Home />
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
   );
 }

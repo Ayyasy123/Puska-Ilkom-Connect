@@ -5,7 +5,7 @@ import {
 import global from '../../assets/styles/global';
 import Fitur from '../components/Fitur';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const test = 0;
   return (
     <View stlye={global.container}>
@@ -15,8 +15,15 @@ const Home = () => {
           <View style={styles.divider} />
           <Text style={styles.title}>Puska Ilkom Connect</Text>
         </View>
-        <TouchableOpacity onPress={() => {}}>
-          <Image source={require('../../assets/icons/menu.png')} />
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <View style={[styles.buttonDrawer, {
+            width: 22.4, height: 4.8, marginLeft: 9.6,
+          }]}
+          />
+          <View style={[styles.buttonDrawer, {
+            width: 32, height: 4.8,
+          }]}
+          />
         </TouchableOpacity>
       </View>
       <Fitur />
@@ -30,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 35,
+    paddingTop: 50,
     paddingBottom: 15,
     paddingHorizontal: 20,
   },
@@ -52,6 +59,11 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     alignSelf: 'center',
+  },
+  buttonDrawer: {
+    backgroundColor: 'white',
+    borderRadius: 8,
+    marginBottom: 5,
   },
 });
 

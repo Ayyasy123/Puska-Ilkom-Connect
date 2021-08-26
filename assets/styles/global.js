@@ -8,6 +8,7 @@ const global = StyleSheet.create({
     padding: 25,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   titleText: {
     fontFamily: 'poppins-semiBold',
@@ -51,6 +52,11 @@ const global = StyleSheet.create({
     marginBottom: 16,
     paddingVertical: 10,
     paddingHorizontal: 16,
+  },
+  iconInputRight: {
+    position: 'absolute',
+    right: 16,
+    bottom: 10,
   },
 });
 

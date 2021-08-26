@@ -73,9 +73,9 @@ const Fitur = () => {
   return (
     <View>
       <View style={styles.backgroundSaldo} />
-      <View style={styles.backgroundFitur} />
+      <View style={styles.backgroundTopFitur} />
       <Saldo />
-      <View>
+      <View style={styles.backgroundFitur}>
         <Text style={styles.titleFitur}>Fitur</Text>
         <FlatList
           data={feature}
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
     color: '#2C2C2C',
     marginVertical: 24,
     paddingLeft: 20,
+    paddingTop: 30,
   },
   title: {
     ...global.reg12Text,
-    fontSize: 10,
     color: '#335CAB',
     textAlign: 'center',
     marginTop: 5,
@@ -120,11 +120,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 120,
   },
-  backgroundFitur: {
+  backgroundTopFitur: {
     backgroundColor: 'white',
     borderTopLeftRadius: 24,
     borderTopRightRadius: 24,
     top: -30,
     height: 30,
   },
+  backgroundFitur: {
+    top: -30,
+    backgroundColor: 'white',
+  },
+
 });

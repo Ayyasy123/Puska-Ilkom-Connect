@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 
 const KeyboardAvoidingWrapper = ({ children }) => (
-  <KeyboardAvoidingView style={{ flex: 1, backgroundColor: 'white', marginTop: 8 }}>
+  <KeyboardAvoidingView style={{ flex: 1, backgroundColor: 'white' }}>
     <ScrollView>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         {children}

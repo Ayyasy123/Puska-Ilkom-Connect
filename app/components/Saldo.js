@@ -9,12 +9,9 @@ import global from '../../assets/styles/global';
 const Saldo = () => (
   <View style={{ alignItems: 'center' }}>
     <View style={styles.containerSaldo}>
-      <View style={{ marginRight: 30 }}>
-        <Text style={styles.saldoText}>Saldo</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image source={require('../../assets/images/Bayarind.png')} style={{ height: 18, width: 45 }} />
-          <Text style={styles.credit}>50000</Text>
-        </View>
+      <View style={{ marginRight: 50 }}>
+        <Image source={require('../../assets/images/Bayarind.png')} style={{ height: 18, width: 48 }} />
+        <Text style={styles.credit}>50000</Text>
       </View>
       <TouchableOpacity style={[styles.containerButton, { marginRight: 20 }]} onPress={() => {}}>
         <LinearGradient
@@ -50,17 +47,11 @@ const styles = StyleSheet.create({
     marginTop: -100,
     borderRadius: 20,
   },
-  saldoText: {
-    ...global.sb12Text,
-    fontSize: 14,
-    color: '#2C2C2C',
-  },
   credit: {
     ...global.med12Text,
     fontSize: 18,
     color: '#0056A3',
-    marginTop: 2,
-    marginLeft: 10,
+    marginTop: 5,
   },
   containerButton: {
     justifyContent: 'center',

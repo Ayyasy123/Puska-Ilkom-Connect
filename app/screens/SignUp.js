@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import {
-  Text, View, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator, Image,
+  Text, View, TextInput, TouchableOpacity, ActivityIndicator,
 } from 'react-native';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
@@ -9,7 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 import global from '../../assets/styles/global';
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [isHide, setIsHide] = useState(true);
   const [isHide2nd, setIsHide2nd] = useState(true);
 
@@ -19,7 +19,6 @@ const SignUp = () => {
   return (
     <KeyboardAvoidingWrapper>
       <View style={global.container}>
-
         <Formik
           initialValues={{
             namaLengkap: '', email: '', noTelp: '', password: '', confirmPassword: '',
@@ -37,7 +36,7 @@ const SignUp = () => {
             handleChange, handleBlur, handleSubmit, values, isSubmitting,
           }) => (
             <View>
-              <View style={{ marginVertical: 60 }}>
+              <View style={{ marginVertical: 45 }}>
 
                 <View style={global.containerInput}>
                   <TextInput
@@ -63,7 +62,7 @@ const SignUp = () => {
                     placeholder="No Telp"
                     onChangeText={handleChange('noTelp')}
                     onBlur={handleBlur('noTelp')}
-                    keyboardType="numeric"
+                    keyboardType="number-pad"
                     value={values.noTelp}
                   />
                 </View>
@@ -79,16 +78,10 @@ const SignUp = () => {
                     value={values.password}
                   />
                   <TouchableOpacity
-                    style={{
-                      position: 'absolute', right: 16, bottom: 10,
-                    }}
+                    style={global.iconInputRight}
                     onPress={() => { setTextShow(!textShow); setIsHide(!isHide); }}
                   >
-                    {textShow === false ? (
-                      <Ionicons name="md-eye-outline" size={24} color="#3C3A36" />
-                    ) : (
-                      <Ionicons name="md-eye-off-outline" size={24} color="#3C3A36" />
-                    )}
+                    <Ionicons name={textShow ? 'md-eye-off-outline' : 'md-eye-outline'} size={24} color="#3C3A36" />
                   </TouchableOpacity>
                 </View>
 
@@ -103,16 +96,10 @@ const SignUp = () => {
                     value={values.confirmPassword}
                   />
                   <TouchableOpacity
-                    style={{
-                      position: 'absolute', right: 16, bottom: 10,
-                    }}
+                    style={global.iconInputRight}
                     onPress={() => { setTextShow2nd(!textShow2nd); setIsHide2nd(!isHide2nd); }}
                   >
-                    {textShow2nd === false ? (
-                      <Ionicons name="md-eye-outline" size={24} color="#3C3A36" />
-                    ) : (
-                      <Ionicons name="md-eye-off-outline" size={24} color="#3C3A36" />
-                    )}
+                    <Ionicons name={textShow2nd ? 'md-eye-off-outline' : 'md-eye-outline'} size={24} color="#3C3A36" />
                   </TouchableOpacity>
                 </View>
               </View>
@@ -134,10 +121,12 @@ const SignUp = () => {
               </TouchableOpacity>
 
               )}
-              <Text style={{ ...global.med12Text, color: '#130F26', textAlign: 'center' }}>
-                Already have an account?
-                <Text style={{ color: '#7293D5' }}> Sign In</Text>
-              </Text>
+              <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                <Text style={{ ...global.med12Text, color: '#130F26' }}>Already have an account?</Text>
+                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                  <Text style={{ ...global.med12Text, color: '#7293D5' }}> Sign In</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </Formik>
