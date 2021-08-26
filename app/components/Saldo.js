@@ -16,18 +16,17 @@ const Saldo = () => (
           <Text style={styles.credit}>50000</Text>
         </View>
       </View>
-      <TouchableOpacity style={{ ...styles.containerButton, marginRight: 20 }}>
+      <TouchableOpacity style={[styles.containerButton, { marginRight: 20 }]} onPress={() => {}}>
         <LinearGradient
           colors={['#335CAB', '#1C7CC1']}
           style={styles.buttonLinear}
-
         >
           <Feather name="repeat" size={20} color="white" />
         </LinearGradient>
         <Text style={styles.buttonText}>Tukarkan</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.containerButton}>
+      <TouchableOpacity style={styles.containerButton} onPress={() => {}}>
         <LinearGradient
           colors={['#335CAB', '#1C7CC1']}
           style={styles.buttonLinear}
@@ -48,7 +47,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     padding: 20,
     maxWidth: '100%',
-    marginTop: -40,
+    marginTop: -100,
     borderRadius: 20,
   },
   saldoText: {
@@ -71,9 +70,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 7,
-    paddingVertical: 15,
-    borderRadius: 100,
+    borderRadius: 30,
+    width: 39,
+    height: 34,
   },
   buttonText: {
     ...global.reg12Text,

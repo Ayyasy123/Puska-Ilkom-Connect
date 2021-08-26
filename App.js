@@ -21,6 +21,6 @@ export default function App() {
   }
 
   return (
-    <Onboarding />
+    <Home />
   );
 }

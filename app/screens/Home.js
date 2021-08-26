@@ -15,11 +15,10 @@ const Home = () => {
           <View style={styles.divider} />
           <Text style={styles.title}>Puska Ilkom Connect</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {}}>
           <Image source={require('../../assets/icons/menu.png')} />
         </TouchableOpacity>
       </View>
-      <View style={styles.backgroundSaldo} />
       <Fitur />
     </View>
   );
@@ -53,11 +52,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     alignSelf: 'center',
-  },
-  backgroundSaldo: {
-    backgroundColor: '#335CAB',
-    width: '100%',
-    height: 120,
   },
 });
 

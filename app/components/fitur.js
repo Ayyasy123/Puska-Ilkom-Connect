@@ -65,17 +65,17 @@ const Fitur = () => {
   ]);
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => {}}>
       <Image source={item.src} style={styles.image} />
       <Text style={styles.title}>{item.title}</Text>
     </TouchableOpacity>
   );
   return (
     <View>
-      <View style={styles.containerFitur}>
-        <View style={{ zIndex: 4 }}>
-          <Saldo />
-        </View>
+      <View style={styles.backgroundSaldo} />
+      <View style={styles.backgroundFitur} />
+      <Saldo />
+      <View>
         <Text style={styles.titleFitur}>Fitur</Text>
         <FlatList
           data={feature}
@@ -92,13 +92,6 @@ const Fitur = () => {
 export default Fitur;
 
 const styles = StyleSheet.create({
-  containerFitur: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    marginTop: -24,
-    zIndex: 0,
-  },
   titleFitur: {
     ...global.titleText,
     fontSize: 20,
@@ -121,5 +114,17 @@ const styles = StyleSheet.create({
   },
   fitur: {
     paddingHorizontal: 30,
+  },
+  backgroundSaldo: {
+    backgroundColor: '#335CAB',
+    width: '100%',
+    height: 120,
+  },
+  backgroundFitur: {
+    backgroundColor: 'white',
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    top: -30,
+    height: 30,
   },
 });
