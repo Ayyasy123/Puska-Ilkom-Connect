@@ -1,14 +1,16 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { IconButton } from 'react-native-paper';
 
 const ButtonBack = () => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity style={{ marginLeft: 20 }} onPress={() => navigation.pop()}>
-      <Ionicons name="chevron-back" size={30} color="#3C3A36" />
-    </TouchableOpacity>
+    <IconButton
+      icon="chevron-left"
+      color="#1C335E"
+      size={34}
+      onPress={() => navigation.goBack()}
+    />
   );
 };
 export default ButtonBack;

@@ -6,8 +6,6 @@ const global = StyleSheet.create({
   container: {
     flex: 1,
     padding: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: 'white',
   },
   titleText: {
@@ -30,7 +28,7 @@ const global = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     color: '#78746D',
-    fontFamily: 'rubik-regular',
+    fontFamily: 'poppins-regular',
     fontSize: 14,
   },
   containerInput: {

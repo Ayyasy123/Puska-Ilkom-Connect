@@ -2,70 +2,83 @@ import React, { useState } from 'react';
 import {
   StyleSheet, Text, View, Image, FlatList, TouchableOpacity,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import global from '../../assets/styles/global';
 import Saldo from './Saldo';
 
 const Fitur = () => {
+  const navigation = useNavigation();
   const [feature, setFeature] = useState([
     {
       id: '1',
       src: require('../../assets/icons/pelatihan.png'),
       title: 'Pelatihan',
+      nav: 'Pelatihan',
     },
     {
       id: '2',
       src: require('../../assets/icons/sertifikasi.png'),
       title: 'Sertifikasi',
+      nav: 'Sertifikasi',
     },
     {
       id: '3',
       src: require('../../assets/icons/digitalStartup.png'),
       title: 'Digital\nStartup',
+      nav: 'Digital Startup',
     },
     {
       id: '4',
       src: require('../../assets/icons/kompetisi.png'),
       title: 'Kompetisi',
+      nav: 'Kompetisi',
     },
     {
       id: '5',
       src: require('../../assets/icons/webinar.png'),
       title: 'Webinar',
+      nav: 'Webinar',
     },
     {
       id: '6',
       src: require('../../assets/icons/compCenter.png'),
       title: 'Computer\nCenter',
+      nav: 'Computer Center',
     },
     {
       id: '7',
       src: require('../../assets/icons/labPenelitian.png'),
       title: 'Lab\nPenelitian',
+      nav: 'Lab Penelitian',
     },
     {
       id: '8',
       src: require('../../assets/icons/hibahKegiatan.png'),
       title: 'Hibah\nKegiatan',
+      nav: 'Hibah Kegiatan',
     },
     {
       id: '9',
       src: require('../../assets/icons/pembayaranLayanan.png'),
       title: 'Pembayaran\nLayanan',
+      nav: 'Pembayaran Layanan',
     },
     {
       id: '10',
       src: require('../../assets/icons/pembelianMerch.png'),
       title: 'Pembelian\nMerchandise',
+      nav: 'Pembelian Merchandise',
     },
     {
       id: '11',
       src: require('../../assets/icons/informasi.png'),
       title: 'Informasi\nLainnya',
+      nav: 'Informasi Lainnya',
     },
   ]);
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity onPress={() => navigation.navigate(item.nav)}>
       <Image source={item.src} style={styles.image} />
       <Text style={styles.title}>{item.title}</Text>
     </TouchableOpacity>

@@ -30,7 +30,7 @@ const DrawerContent = (props) => (
       </View>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
-    <TouchableOpacity style={styles.buttonLogout} onPress={() => { props.navigation.navigate('SignIn'); }}>
+    <TouchableOpacity style={styles.buttonLogout} onPress={() => { props.navigation.navigate('Sign In'); }}>
       <Text style={styles.textLogout}>Logout</Text>
     </TouchableOpacity>
   </View>

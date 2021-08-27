@@ -78,7 +78,7 @@ const SignIn = ({ navigation }) => {
     <KeyboardAvoidingWrapper>
       <View style={global.container}>
         <Image source={require('../../assets/images/SignIn.png')} style={global.image} />
-        <Text style={{ ...global.titleText, color: '#1C335E', marginBottom: 16 }}>Sign In</Text>
+        <Text style={styles.textSignIn}>Sign In</Text>
         <Formik
           initialValues={{ username: '', password: '' }}
           onSubmit={(values, { setSubmitting }) => {
@@ -98,6 +98,7 @@ const SignIn = ({ navigation }) => {
                 <TextInput
                   style={global.textInput}
                   placeholder="Email"
+                  keyboardType="email-address"
                   onChangeText={handleChange('username')}
                   onBlur={handleBlur('username')}
                   value={values.username}
@@ -123,35 +124,29 @@ const SignIn = ({ navigation }) => {
               </View>
 
               <TouchableOpacity style={{ alignSelf: 'flex-end' }}>
-                <Text style={{
-                  ...global.reg12Text, color: '#DC4645', textDecorationLine: 'underline', marginBottom: 30, marginTop: -10,
-                }}
-                >
-                  Forget Password
+                <Text style={styles.forgotPass}>
+                  Forgot Password
                 </Text>
               </TouchableOpacity>
-
-              {!isSubmitting && (
-              <TouchableOpacity
-                style={global.containerButton}
-                onPress={handleSubmit}
-              >
-                <Text style={{ ...global.titleText, color: 'white', textAlign: 'center' }}>Sign In</Text>
-              </TouchableOpacity>
-
-              )}
-              {isSubmitting && (
-              <TouchableOpacity
-                style={global.containerButton}
-                disabled
-              >
-                <ActivityIndicator size="large" color="white" />
-              </TouchableOpacity>
-
-              )}
+              {isSubmitting ? (
+                <TouchableOpacity
+                  style={global.containerButton}
+                  disabled
+                >
+                  <ActivityIndicator size="large" color="white" />
+                </TouchableOpacity>
+              )
+                : (
+                  <TouchableOpacity
+                    style={global.containerButton}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={{ ...global.titleText, color: 'white', textAlign: 'center' }}>Sign In</Text>
+                  </TouchableOpacity>
+                )}
               <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text style={{ ...global.med12Text, color: '#130F26' }}>Don't have account?</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Sign Up')}>
                   <Text style={{ ...global.med12Text, color: '#7293D5' }}> Sign Up</Text>
                 </TouchableOpacity>
               </View>
@@ -164,7 +159,24 @@ const SignIn = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-
+  forgotPass: {
+    ...global.reg12Text,
+    color: '#6B7075',
+    textDecorationLine: 'underline',
+    marginBottom: 30,
+    marginTop: -10,
+  },
+  textSignIn: {
+    ...global.titleText,
+    color: '#1C335E',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  buttonSignIn: {
+    ...global.titleText,
+    color: 'white',
+    textAlign: 'center',
+  },
 });
 
 export default SignIn;

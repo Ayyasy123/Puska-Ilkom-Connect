@@ -8,11 +8,12 @@ import {
 import DrawerContent from '../components/DrawerContent';
 import HomeScreen from '../screens/Home';
 import ProfileScreen from '../screens/Profile';
-import WebinarScreen from '../screens/Webinar';
+import WebinarScreen from '../screens/MyWebinar';
 import MyCourseScreen from '../screens/MyCourse';
 import MyCertificateScreen from '../screens/MyCertificate';
 import TransactionHistoryScreen from '../screens/TransactionHistory';
 import global from '../../assets/styles/global';
+import ButtonBack from '../components/ButtonBack';
 
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
@@ -21,6 +22,18 @@ const WebinarStack = createStackNavigator();
 const MyCourseStack = createStackNavigator();
 const MyCertificateStack = createStackNavigator();
 const TransactionHistoryStack = createStackNavigator();
+
+const optionsHeader = {
+  headerTitleAlign: 'center',
+  headerTitleStyle: {
+    fontFamily: 'poppins-semiBold',
+    color: '#1C335E',
+  },
+  headerStyle: {
+    elevation: 0,
+  },
+  headerLeft: () => <ButtonBack />,
+};
 
 const Home = () => (
   <HomeStack.Navigator>
@@ -36,6 +49,7 @@ const Profile = () => (
     <ProfileStack.Screen
       name="Profile"
       component={ProfileScreen}
+      options={optionsHeader}
     />
   </ProfileStack.Navigator>
 );
@@ -44,30 +58,34 @@ const Webinar = () => (
     <WebinarStack.Screen
       name="Webinar"
       component={WebinarScreen}
+      options={optionsHeader}
     />
   </WebinarStack.Navigator>
 );
 const MyCourse = () => (
   <MyCourseStack.Navigator>
     <MyCourseStack.Screen
-      name="MyCourse"
+      name="My Course"
       component={MyCourseScreen}
+      options={optionsHeader}
     />
   </MyCourseStack.Navigator>
 );
 const MyCertificate = () => (
   <MyCertificateStack.Navigator>
     <MyCertificateStack.Screen
-      name="MyCertificate"
+      name="My Certificate"
       component={MyCertificateScreen}
+      options={optionsHeader}
     />
   </MyCertificateStack.Navigator>
 );
 const TransactionHistory = () => (
   <TransactionHistoryStack.Navigator>
     <TransactionHistoryStack.Screen
-      name="TransactionHistory"
+      name="Transaction History"
       component={TransactionHistoryScreen}
+      options={optionsHeader}
     />
   </TransactionHistoryStack.Navigator>
 );
@@ -101,7 +119,7 @@ const DrawerNavigator = () => (
       }}
     />
     <Drawer.Screen
-      name="webinar"
+      name="latest-webinar"
       component={Webinar}
       options={{
         drawerLabel: ({ color }) => <Text style={[global.sb12Text, { color, fontSize: 14 }]}>Webinar</Text>,

@@ -51,6 +51,7 @@ const SignUp = ({ navigation }) => {
                   <TextInput
                     style={global.textInput}
                     placeholder="Email"
+                    keyboardType="email-address"
                     onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     value={values.email}
@@ -103,27 +104,25 @@ const SignUp = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              {!isSubmitting && (
-              <TouchableOpacity
-                style={global.containerButton}
-                onPress={handleSubmit}
-              >
-                <Text style={{ ...global.titleText, color: 'white', textAlign: 'center' }}>Sign Up</Text>
-              </TouchableOpacity>
-
-              )}
-              {isSubmitting && (
-              <TouchableOpacity
-                style={global.containerButton}
-                disabled
-              >
-                <ActivityIndicator size="large" color="white" />
-              </TouchableOpacity>
-
-              )}
+              {isSubmitting ? (
+                <TouchableOpacity
+                  style={global.containerButton}
+                  disabled
+                >
+                  <ActivityIndicator size="large" color="white" />
+                </TouchableOpacity>
+              )
+                : (
+                  <TouchableOpacity
+                    style={global.containerButton}
+                    onPress={handleSubmit}
+                  >
+                    <Text style={{ ...global.titleText, color: 'white', textAlign: 'center' }}>Sign Up</Text>
+                  </TouchableOpacity>
+                )}
               <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Text style={{ ...global.med12Text, color: '#130F26' }}>Already have an account?</Text>
-                <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+                <TouchableOpacity onPress={() => navigation.navigate('Sign In')}>
                   <Text style={{ ...global.med12Text, color: '#7293D5' }}> Sign In</Text>
                 </TouchableOpacity>
               </View>
