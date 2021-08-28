@@ -5,7 +5,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import global from '../../assets/styles/global';
 
-const CardLiveCourse = () => (
+const CardLiveCourse = ({ isClose }) => (
   <View style={{
     flexDirection: 'row', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 10, marginBottom: 10,
   }}
@@ -22,14 +22,16 @@ const CardLiveCourse = () => (
         <Text style={[global.sb12Text, { color: '#222425' }]}>Rp 250.000</Text>
       </View>
     </View>
-    <TouchableOpacity style={{
-      backgroundColor: '#4285F4',
-      alignSelf: 'flex-end',
-      paddingHorizontal: 20,
-      paddingVertical: 5,
-      borderRadius: 15,
-      width: '30%',
-    }}
+    <TouchableOpacity
+      style={{
+        backgroundColor: '#4285F4',
+        alignSelf: 'flex-end',
+        paddingHorizontal: 20,
+        paddingVertical: 5,
+        borderRadius: 15,
+        width: '30%',
+      }}
+      disabled={!isClose}
     >
       <Text style={[global.sb12Text, { color: 'white', alignSelf: 'center' }]}>Enroll</Text>
     </TouchableOpacity>

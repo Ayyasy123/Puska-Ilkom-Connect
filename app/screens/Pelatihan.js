@@ -19,13 +19,16 @@ const Pelatihan = () => {
   const [isClose, setIsClose] = useState(true);
 
   const { height } = Dimensions.get('window');
-  const hightSheet = 998 - height + 400;
+  const hightSheet = 998 - height + 380;
 
   const renderInner = () => (
     <View style={styles.panel}>
       <Text style={[global.titleText, { color: '#1C335E', marginBottom: 10 }]}>Level</Text>
       <View style={{ marginBottom: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+          onPress={() => setChecked('all')}
+        >
           <RadioButton
             value="all"
             color="#335CAB"
@@ -33,11 +36,12 @@ const Pelatihan = () => {
             status={checked === 'all' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('all')}
           />
-          <TouchableOpacity onPress={() => setChecked('all')}>
-            <Text style={[global.med12Text, { color: '#222425' }]}>Semua Level</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[global.med12Text, { color: '#222425' }]}>Semua Level</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+          onPress={() => setChecked('dasar')}
+        >
           <RadioButton
             value="dasar"
             color="#335CAB"
@@ -45,11 +49,12 @@ const Pelatihan = () => {
             status={checked === 'dasar' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('dasar')}
           />
-          <TouchableOpacity onPress={() => setChecked('dasar')}>
-            <Text style={[global.med12Text, { color: '#222425' }]}>Dasar</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[global.med12Text, { color: '#222425' }]}>Dasar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+          onPress={() => setChecked('menengah')}
+        >
           <RadioButton
             value="menengah"
             color="#335CAB"
@@ -57,11 +62,12 @@ const Pelatihan = () => {
             status={checked === 'menengah' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('menengah')}
           />
-          <TouchableOpacity onPress={() => setChecked('menengah')}>
-            <Text style={[global.med12Text, { color: '#222425' }]}>Menengah</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={[global.med12Text, { color: '#222425' }]}>Menengah</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+          onPress={() => setChecked('atas')}
+        >
           <RadioButton
             value="atas"
             color="#335CAB"
@@ -69,18 +75,16 @@ const Pelatihan = () => {
             status={checked === 'atas' ? 'checked' : 'unchecked'}
             onPress={() => setChecked('atas')}
           />
-          <TouchableOpacity onPress={() => setChecked('atas')}>
-            <Text style={[global.med12Text, { color: '#222425' }]}>Atas</Text>
-          </TouchableOpacity>
-        </View>
+          <Text style={[global.med12Text, { color: '#222425' }]}>Atas</Text>
+        </TouchableOpacity>
       </View>
       <TouchableOpacity
         style={global.containerButton}
         onPress={() => sheetRef.current.snapTo(1)}
       >
-        <Text style={{
-          ...global.titleText, fontSize: 14, color: 'white', textAlign: 'center',
-        }}
+        <Text style={[
+          global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
+        ]}
         >
           Apply Filters
         </Text>
@@ -94,7 +98,13 @@ const Pelatihan = () => {
       </View>
     </View>
   );
+  const AnimatedView = Animated.View;
+
   const fall = new Animated.Value(1);
+  const animatedShadowOpacity = Animated.interpolateNode(fall, {
+    inputRange: [0, 1],
+    outputRange: [0.5, 0],
+  });
   const sheetRef = useRef(null);
   return (
     <ScrollView
@@ -112,87 +122,97 @@ const Pelatihan = () => {
         enabledContentTapInteraction={false}
       />
       <View style={global.container}>
-        <Animated.View style={{ opacity: Animated.add(0.3, Animated.multiply(fall, 1.0)) }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 40 }}>
-            <View style={[global.containerInput, {
-              backgroundColor: '#EFF0F0',
-              borderWidth: 0,
-              marginBottom: 0,
-              width: global.containerInput.width - 60,
-              flexDirection: 'row',
-            }]}
-            >
-              <TouchableOpacity
-                onPress={() => {}}
-                style={{ alignSelf: 'center', marginLeft: 16 }}
-              >
-                <Ionicons name="md-search-outline" size={24} color="#6B7075" />
-              </TouchableOpacity>
-              <TextInput
-                inlineImageLeft="search_icon"
-                style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
-                placeholder="Find Courses....."
-                onChangeText={setFind}
-                value={find}
-              />
-            </View>
+        <AnimatedView
+          pointerEvents="none"
+          style={[
+            styles.shadowContainer,
+            {
+              opacity: animatedShadowOpacity,
+            },
+          ]}
+        />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 40 }}>
+          <View style={[global.containerInput, {
+            backgroundColor: '#EFF0F0',
+            borderWidth: 0,
+            marginBottom: 0,
+            width: global.containerInput.width - 60,
+            flexDirection: 'row',
+          }]}
+          >
             <TouchableOpacity
-              onPress={() => sheetRef.current.snapTo(0)}
-              style={{ alignItems: 'center', marginRight: 2 }}
+              onPress={() => {}}
+              disabled={!isClose}
+              style={{ alignSelf: 'center', marginLeft: 16 }}
             >
-              <FontAwesome
-                name="sliders"
-                size={24}
-                color="white"
-                style={{
-                  backgroundColor: '#335CAB',
-                  transform: [{ rotate: '-90deg' }],
-                  padding: 13,
-                  borderRadius: 10,
-                }}
-              />
+              <Ionicons name="md-search-outline" size={24} color="#6B7075" />
+            </TouchableOpacity>
+            <TextInput
+              editable={isClose}
+              inlineImageLeft="search_icon"
+              style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
+              placeholder="Find Courses....."
+              onChangeText={setFind}
+              value={find}
+            />
+          </View>
+          <TouchableOpacity
+            onPress={() => sheetRef.current.snapTo(0)}
+            disabled={!isClose}
+            style={{ alignItems: 'center', marginRight: 2 }}
+          >
+            <FontAwesome
+              name="sliders"
+              size={24}
+              color="white"
+              style={{
+                backgroundColor: '#335CAB',
+                transform: [{ rotate: '-90deg' }],
+                padding: 13,
+                borderRadius: 10,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={{ marginBottom: 20 }}>
+          <View style={{
+            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+          }}
+          >
+            <Text style={[global.titleText, { color: '#222425' }]}>Free Course</Text>
+            <TouchableOpacity disabled={!isClose}>
+              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
             </TouchableOpacity>
           </View>
-          <View style={{ marginBottom: 20 }}>
-            <View style={{
-              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-            }}
-            >
-              <Text style={[global.titleText, { color: '#222425' }]}>Free Course</Text>
-              <TouchableOpacity>
-                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
-              </TouchableOpacity>
-            </View>
-            <CardFreeCourse />
-            <CardFreeCourse />
+          <CardFreeCourse isClose={isClose} />
+          <CardFreeCourse isClose={isClose} />
+        </View>
+        <View style={{ marginBottom: 20 }}>
+          <View style={{
+            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+          }}
+          >
+            <Text style={[global.titleText, { color: '#222425' }]}>Premuim Course</Text>
+            <TouchableOpacity>
+              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+            </TouchableOpacity>
           </View>
-          <View style={{ marginBottom: 20 }}>
-            <View style={{
-              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-            }}
-            >
-              <Text style={[global.titleText, { color: '#222425' }]}>Premuim Course</Text>
-              <TouchableOpacity>
-                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
-              </TouchableOpacity>
-            </View>
-            <CardPremiumCourse />
-            <CardPremiumCourse />
+          <CardPremiumCourse isClose={isClose} />
+          <CardPremiumCourse isClose={isClose} />
+        </View>
+        <View style={{ marginBottom: 40 }}>
+          <View style={{
+            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+          }}
+          >
+            <Text style={[global.titleText, { color: '#222425' }]}>Live Course</Text>
+            <TouchableOpacity>
+              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+            </TouchableOpacity>
           </View>
-          <View style={{ marginBottom: 40 }}>
-            <View style={{
-              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-            }}
-            >
-              <Text style={[global.titleText, { color: '#222425' }]}>Live Course</Text>
-              <TouchableOpacity>
-                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
-              </TouchableOpacity>
-            </View>
-            <CardLiveCourse />
-            <CardLiveCourse />
-          </View>
-        </Animated.View>
+          <CardLiveCourse isClose={isClose} />
+          <CardLiveCourse isClose={isClose} />
+        </View>
       </View>
     </ScrollView>
   );
@@ -218,6 +238,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: '#EFF0F0',
     marginVertical: 10,
+  },
+  shadowContainer: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: '#000',
+    zIndex: 10,
   },
 });
 export default Pelatihan;
