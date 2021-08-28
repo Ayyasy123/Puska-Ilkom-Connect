@@ -13,7 +13,7 @@ import CardFreeCourse from '../components/CardFreeCourse';
 import CardPremiumCourse from '../components/CardPremiumCourse';
 import CardLiveCourse from '../components/CardLiveCourse';
 
-const Pelatihan = () => {
+const Pelatihan = ({ navigation }) => {
   const [find, setFind] = useState();
   const [checked, setChecked] = useState('all');
   const [isClose, setIsClose] = useState(true);
@@ -180,7 +180,10 @@ const Pelatihan = () => {
           }}
           >
             <Text style={[global.titleText, { color: '#222425' }]}>Free Course</Text>
-            <TouchableOpacity disabled={!isClose}>
+            <TouchableOpacity
+              disabled={!isClose}
+              onPress={() => navigation.navigate('Course', { title: 'Free Course', isClose })}
+            >
               <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
             </TouchableOpacity>
           </View>
@@ -193,7 +196,9 @@ const Pelatihan = () => {
           }}
           >
             <Text style={[global.titleText, { color: '#222425' }]}>Premuim Course</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Course', { title: 'Premium Course' })}
+            >
               <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
             </TouchableOpacity>
           </View>
@@ -206,7 +211,9 @@ const Pelatihan = () => {
           }}
           >
             <Text style={[global.titleText, { color: '#222425' }]}>Live Course</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Course', { title: 'Live Course' })}
+            >
               <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
             </TouchableOpacity>
           </View>

@@ -24,6 +24,10 @@ const global = StyleSheet.create({
     fontFamily: 'poppins-semiBold',
     fontSize: 12,
   },
+  sb18Text: {
+    fontFamily: 'poppins-semiBold',
+    fontSize: 18,
+  },
   textInput: {
     paddingVertical: 10,
     paddingHorizontal: 16,
