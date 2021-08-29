@@ -5,6 +5,8 @@ import SignUpScreen from '../screens/SignUp';
 import PelatihanScreen from '../screens/Pelatihan';
 import CourseScreen from '../screens/Course';
 import DetailCourseScreen from '../screens/DetailCourse';
+import MateriSilabusScreen from '../screens/MateriSilabus';
+import QuizScreen from '../screens/Quiz';
 import OnboardingScreen from '../screens/Onboarding';
 import DrawerNavigator from './DrawerNavigator';
 import ButtonBack from '../components/ButtonBack';
@@ -56,6 +58,16 @@ const RootStack = () => (
     <Stack.Screen
       name="Detail Course"
       component={DetailCourseScreen}
+      options={optionsHeader}
+    />
+    <Stack.Screen
+      name="Materi Silabus"
+      component={MateriSilabusScreen}
+      options={({ route }) => ({ ...optionsHeader, title: route.params.title })}
+    />
+    <Stack.Screen
+      name="Quiz"
+      component={QuizScreen}
       options={optionsHeader}
     />
     <Stack.Screen name="Onboarding" component={OnboardingScreen} />

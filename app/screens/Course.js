@@ -8,39 +8,40 @@ import CardLiveCourse from '../components/CardLiveCourse';
 const Course = ({ route }) => {
   const { title, isClose } = route.params;
   return (
-    <ScrollView style={global.container}>
-      {title === 'Free Course' ? (
-        <>
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-        </>
-      ) : null}
-      {title === 'Premium Course' ? (
-        <>
-          <CardPremiumCourse />
-          <CardPremiumCourse />
-          <CardPremiumCourse />
-          <CardPremiumCourse />
-          <CardPremiumCourse />
-          <CardPremiumCourse />
-        </>
-      ) : null}
-      {title === 'Live Course' ? (
-        <>
-          <CardLiveCourse />
-          <CardLiveCourse />
-          <CardLiveCourse />
-          <CardLiveCourse />
-          <CardLiveCourse />
-          <CardLiveCourse />
-        </>
-      ) : null}
-
+    <ScrollView>
+      <View style={global.container}>
+        {title === 'Free Course' ? (
+          <>
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse isClose={isClose} />
+          </>
+        ) : null}
+        {title === 'Premium Course' ? (
+          <>
+            <CardPremiumCourse />
+            <CardPremiumCourse />
+            <CardPremiumCourse />
+            <CardPremiumCourse />
+            <CardPremiumCourse />
+            <CardPremiumCourse />
+          </>
+        ) : null}
+        {title === 'Live Course' ? (
+          <>
+            <CardLiveCourse />
+            <CardLiveCourse />
+            <CardLiveCourse />
+            <CardLiveCourse />
+            <CardLiveCourse />
+            <CardLiveCourse />
+          </>
+        ) : null}
+      </View>
     </ScrollView>
   );
 };

@@ -10,7 +10,7 @@ const CardLiveCourse = ({ isClose }) => (
     flexDirection: 'row', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 10, marginBottom: 10,
   }}
   >
-    <Image source={require('../../assets/images/book_course.png')} style={{ width: '20%', height: '100%' }} />
+    <Image source={require('../../assets/images/book_course.png')} style={{ width: 80, height: 80 }} />
     <View style={{ width: '50%', padding: 10 }}>
       <Text style={[global.titleText, { fontSize: 14 }]}>Web Development</Text>
       <View style={{ flexDirection: 'row' }}>
@@ -29,7 +29,8 @@ const CardLiveCourse = ({ isClose }) => (
         paddingHorizontal: 20,
         paddingVertical: 5,
         borderRadius: 15,
-        width: '30%',
+        right: 10,
+        width: 100,
       }}
       disabled={!isClose}
     >

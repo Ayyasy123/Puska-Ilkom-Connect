@@ -109,6 +109,7 @@ const Pelatihan = ({ navigation }) => {
   return (
     <ScrollView
       scrollEnabled={isClose}
+      style={{ backgroundColor: 'white' }}
     >
       <BottomSheet
         ref={sheetRef}

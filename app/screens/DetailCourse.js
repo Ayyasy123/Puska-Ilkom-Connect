@@ -5,11 +5,11 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import global from '../../assets/styles/global';
 
-const DetailCourse = () => {
+const DetailCourse = ({ navigation }) => {
   const [active, setActive] = useState('left');
   return (
-    <ScrollView style={global.container}>
-      <View style={{ alignItems: 'center' }}>
+    <ScrollView style={{ backgroundColor: 'white' }}>
+      <View style={[global.container, { alignItems: 'center' }]}>
         <Image
           source={require('../../assets/images/video_course.png')}
           style={{
@@ -62,7 +62,7 @@ const DetailCourse = () => {
             </Text>
           </TouchableOpacity>
         </View>
-        <View style={{
+        {/* <View style={{
           width: '100%', backgroundColor: '#EFF0F0', borderRadius: 12, padding: 16, marginBottom: 10,
         }}
         >
@@ -110,8 +110,41 @@ const DetailCourse = () => {
             </Text>
           </View>
         </View>
+        <View style={{
+          width: '100%', backgroundColor: '#EFF0F0', borderRadius: 12, padding: 16, marginBottom: 10,
+        }}
+        >
+          <Text style={[global.sb12Text, { fontSize: 14, color: '#130F26' }]}>Informasi Umum</Text>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{
+              width: 5, height: 5, backgroundColor: '#CDEF77', marginTop: 5,
+            }}
+            />
+            <Text style={[global.med12Text, { fontSize: 10, color: '#130F26', marginLeft: 3 }]}>
+              Menguasai dasar-dasar pemrograman web menggunakan bahasa pemrograman PHP
+            </Text>
+          </View>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{
+              width: 5, height: 5, backgroundColor: '#CDEF77', marginTop: 5,
+            }}
+            />
+            <Text style={[global.med12Text, { fontSize: 10, color: '#130F26', marginLeft: 3 }]}>
+              Menguasai cara membuat halaman web menggunakan HTML dan CSS
+            </Text>
+          </View>
+        </View> */}
         <TouchableOpacity
-          style={[global.containerButton, {marginVertical: 20}]}
+          style={{
+            width: '100%', backgroundColor: '#EFF0F0', borderRadius: 12, padding: 16, marginBottom: 10,
+          }}
+          onPress={() => navigation.navigate('Materi Silabus', { title: 'Web Development' })}
+        >
+          <Text style={[global.sb12Text, { fontSize: 12, color: '#130F26' }]}>Informasi Umum</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[global.containerButton, { marginVertical: 20 }]}
           onPress={() => {}}
         >
           <Text style={[
