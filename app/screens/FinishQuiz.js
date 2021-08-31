@@ -7,7 +7,7 @@ import global from '../../assets/styles/global';
 const { width } = Dimensions.get('window');
 
 const FinishQuiz = () => (
-  <View style={[global.container, { alignItems: 'center' }]}>
+  <View style={[global.container, { justifyContent: 'center', alignItems: 'center' }]}>
     <Image
       source={require('../../assets/images/finish_quiz.png')}
       style={{

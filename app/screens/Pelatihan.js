@@ -2,7 +2,7 @@ import React, {
   useState, useRef,
 } from 'react';
 import {
-  View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Dimensions,
+  View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet,
 } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import Animated from 'react-native-reanimated';
@@ -16,10 +16,8 @@ import CardLiveCourse from '../components/CardLiveCourse';
 const Pelatihan = ({ navigation }) => {
   const [find, setFind] = useState();
   const [checked, setChecked] = useState('all');
-  const [isClose, setIsClose] = useState(true);
-
-  const { height } = Dimensions.get('window');
-  const hightSheet = 998 - height + 380;
+  const [init, setInit] = useState(1);
+  const [isShow, setIsShow] = useState(false);
 
   const renderInner = () => (
     <View style={styles.panel}>
@@ -100,129 +98,133 @@ const Pelatihan = ({ navigation }) => {
   );
   const AnimatedView = Animated.View;
 
-  const fall = new Animated.Value(1);
+  const fall = new Animated.Value(init);
   const animatedShadowOpacity = Animated.interpolateNode(fall, {
     inputRange: [0, 1],
     outputRange: [0.5, 0],
   });
   const sheetRef = useRef(null);
   return (
-    <ScrollView
-      scrollEnabled={isClose}
-      style={{ backgroundColor: 'white' }}
-    >
+    <>
       <BottomSheet
         ref={sheetRef}
-        snapPoints={[hightSheet || 0, 0, 0]}
+        snapPoints={[330, 0, 0]}
         renderContent={renderInner}
         renderHeader={renderHeader}
         initialSnap={1}
+        onOpenStart={() => {
+          setInit(0); setIsShow(true);
+        }}
+        onCloseEnd={() => {
+          setInit(1); setIsShow(false);
+        }}
         callbackNode={fall}
-        onOpenStart={() => setIsClose(false)}
-        onCloseEnd={() => setIsClose(true)}
         enabledContentTapInteraction={false}
       />
-      <View style={global.container}>
-        <AnimatedView
-          pointerEvents="none"
-          style={[
-            styles.shadowContainer,
-            {
-              opacity: animatedShadowOpacity,
-            },
-          ]}
-        />
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 40 }}>
-          <View style={[global.containerInput, {
-            backgroundColor: '#EFF0F0',
-            borderWidth: 0,
-            marginBottom: 0,
-            width: global.containerInput.width - 60,
-            flexDirection: 'row',
-          }]}
-          >
-            <TouchableOpacity
-              onPress={() => {}}
-              disabled={!isClose}
-              style={{ alignSelf: 'center', marginLeft: 16 }}
+      <AnimatedView
+        pointerEvents={isShow ? 'box-only' : 'none'}
+        style={[
+          styles.shadowContainer,
+          {
+            opacity: animatedShadowOpacity,
+          },
+        ]}
+      />
+      <ScrollView
+        scrollEnabled={!isShow}
+        style={{ backgroundColor: 'white' }}
+      >
+        <View style={global.container}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 40 }}>
+            <View style={[global.containerInput, {
+              backgroundColor: '#EFF0F0',
+              borderWidth: 0,
+              marginBottom: 0,
+              width: global.containerInput.width - 60,
+              flexDirection: 'row',
+            }]}
             >
-              <Ionicons name="md-search-outline" size={24} color="#6B7075" />
-            </TouchableOpacity>
-            <TextInput
-              editable={isClose}
-              inlineImageLeft="search_icon"
-              style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
-              placeholder="Find Courses....."
-              onChangeText={setFind}
-              value={find}
-            />
-          </View>
-          <TouchableOpacity
-            onPress={() => sheetRef.current.snapTo(0)}
-            disabled={!isClose}
-            style={{ alignItems: 'center', marginRight: 2 }}
-          >
-            <FontAwesome
-              name="sliders"
-              size={24}
-              color="white"
-              style={{
-                backgroundColor: '#335CAB',
-                transform: [{ rotate: '-90deg' }],
-                padding: 13,
-                borderRadius: 10,
+              <TouchableOpacity
+                onPress={() => {}}
+                style={{ alignSelf: 'center', marginLeft: 16 }}
+              >
+                <Ionicons name="md-search-outline" size={24} color="#6B7075" />
+              </TouchableOpacity>
+              <TextInput
+                inlineImageLeft="search_icon"
+                style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
+                placeholder="Find Courses....."
+                onChangeText={setFind}
+                value={find}
+              />
+            </View>
+            <TouchableOpacity
+              onPress={() => {
+                sheetRef.current.snapTo(0);
               }}
-            />
-          </TouchableOpacity>
-        </View>
-        <View style={{ marginBottom: 20 }}>
-          <View style={{
-            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-          }}
-          >
-            <Text style={[global.titleText, { color: '#222425' }]}>Free Course</Text>
-            <TouchableOpacity
-              disabled={!isClose}
-              onPress={() => navigation.navigate('Course', { title: 'Free Course', isClose })}
+              style={{ alignItems: 'center', marginRight: 2 }}
             >
-              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+              <FontAwesome
+                name="sliders"
+                size={24}
+                color="white"
+                style={{
+                  backgroundColor: '#335CAB',
+                  transform: [{ rotate: '-90deg' }],
+                  padding: 13,
+                  borderRadius: 10,
+                }}
+              />
             </TouchableOpacity>
           </View>
-          <CardFreeCourse isClose={isClose} />
-          <CardFreeCourse isClose={isClose} />
-        </View>
-        <View style={{ marginBottom: 20 }}>
-          <View style={{
-            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-          }}
-          >
-            <Text style={[global.titleText, { color: '#222425' }]}>Premuim Course</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Course', { title: 'Premium Course' })}
+          <View style={{ marginBottom: 20 }}>
+            <View style={{
+              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+            }}
             >
-              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
-            </TouchableOpacity>
+              <Text style={[global.titleText, { color: '#222425' }]}>Free Course</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Course', { title: 'Free Course' })}
+              >
+                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+              </TouchableOpacity>
+            </View>
+            <CardFreeCourse />
+            <CardFreeCourse />
           </View>
-          <CardPremiumCourse isClose={isClose} />
-          <CardPremiumCourse isClose={isClose} />
-        </View>
-        <View style={{ marginBottom: 40 }}>
-          <View style={{
-            flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
-          }}
-          >
-            <Text style={[global.titleText, { color: '#222425' }]}>Live Course</Text>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Course', { title: 'Live Course' })}
+          <View style={{ marginBottom: 20 }}>
+            <View style={{
+              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+            }}
             >
-              <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
-            </TouchableOpacity>
+              <Text style={[global.titleText, { color: '#222425' }]}>Premuim Course</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Course', { title: 'Premium Course' })}
+              >
+                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+              </TouchableOpacity>
+            </View>
+            <CardPremiumCourse />
+            <CardPremiumCourse />
           </View>
-          <CardLiveCourse isClose={isClose} />
-          <CardLiveCourse isClose={isClose} />
+          <View style={{ marginBottom: 40 }}>
+            <View style={{
+              flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
+            }}
+            >
+              <Text style={[global.titleText, { color: '#222425' }]}>Live Course</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Course', { title: 'Live Course' })}
+              >
+                <Text style={[global.sb12Text, { color: '#335CAB' }]}>See All</Text>
+              </TouchableOpacity>
+            </View>
+            <CardLiveCourse />
+            <CardLiveCourse />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 

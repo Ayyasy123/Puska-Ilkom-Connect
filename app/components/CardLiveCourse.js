@@ -5,9 +5,9 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import global from '../../assets/styles/global';
 
-const CardLiveCourse = ({ isClose }) => (
+const CardLiveCourse = () => (
   <View style={{
-    flexDirection: 'row', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 10, marginBottom: 10,
+    flexDirection: 'row', justifyContent: 'space-between', backgroundColor: '#F5F5F5', padding: 10, borderRadius: 10, marginBottom: 10,
   }}
   >
     <Image source={require('../../assets/images/book_course.png')} style={{ width: 80, height: 80 }} />
@@ -26,13 +26,10 @@ const CardLiveCourse = ({ isClose }) => (
       style={{
         backgroundColor: '#4285F4',
         alignSelf: 'flex-end',
-        paddingHorizontal: 20,
+        paddingHorizontal: 25,
         paddingVertical: 5,
         borderRadius: 15,
-        right: 10,
-        width: 100,
       }}
-      disabled={!isClose}
     >
       <Text style={[global.sb12Text, { color: 'white', alignSelf: 'center' }]}>Enroll</Text>
     </TouchableOpacity>

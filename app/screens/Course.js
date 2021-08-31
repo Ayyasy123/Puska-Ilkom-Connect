@@ -6,19 +6,19 @@ import CardPremiumCourse from '../components/CardPremiumCourse';
 import CardLiveCourse from '../components/CardLiveCourse';
 
 const Course = ({ route }) => {
-  const { title, isClose } = route.params;
+  const { title } = route.params;
   return (
     <ScrollView style={{ backgroundColor: 'white' }}>
       <View style={global.container}>
         {title === 'Free Course' ? (
           <>
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
-            <CardFreeCourse isClose={isClose} />
+            <CardFreeCourse />
+            <CardFreeCourse />
+            <CardFreeCourse />
+            <CardFreeCourse />
+            <CardFreeCourse />
+            <CardFreeCourse />
+            <CardFreeCourse />
           </>
         ) : null}
         {title === 'Premium Course' ? (
