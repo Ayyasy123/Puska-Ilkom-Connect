@@ -5,7 +5,8 @@ import {
 import global from '../../assets/styles/global';
 
 const { width } = Dimensions.get('window');
-const Quiz = () => {
+
+const Quiz = ({ navigation }) => {
   const [value, setValue] = useState(null);
   return (
     <ScrollView style={{ backgroundColor: 'white' }}>
@@ -66,7 +67,7 @@ const Quiz = () => {
         </View>
         <TouchableOpacity
           style={global.containerButton}
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Finish Quiz')}
         >
           <Text style={[
             global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },

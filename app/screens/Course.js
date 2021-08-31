@@ -8,7 +8,7 @@ import CardLiveCourse from '../components/CardLiveCourse';
 const Course = ({ route }) => {
   const { title, isClose } = route.params;
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: 'white' }}>
       <View style={global.container}>
         {title === 'Free Course' ? (
           <>
