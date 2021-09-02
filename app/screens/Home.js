@@ -17,11 +17,11 @@ const Home = ({ navigation }) => {
         </View>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <View style={[styles.buttonDrawer, {
-            width: 22.4, height: 4.8, marginLeft: 9.6,
+            width: 17.4, height: 4.5, marginLeft: 9.6,
           }]}
           />
           <View style={[styles.buttonDrawer, {
-            width: 32, height: 4.8,
+            width: 27, height: 4.5,
           }]}
           />
         </TouchableOpacity>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 30,
     paddingBottom: 15,
     paddingHorizontal: 20,
   },

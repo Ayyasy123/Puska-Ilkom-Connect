@@ -1,26 +1,38 @@
-import React from 'react';
-import { useFonts } from 'expo-font';
-import { NavigationContainer } from '@react-navigation/native';
-import RootNavigator from './app/routes/RootNavigator';
+import React, { useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import AppLoading from 'expo-app-loading';
+import AuthNavigator from './app/routes/AuthNavigator';
+import { AuthContext } from './app/context';
 
 export default function App() {
-  const [loaded] = useFonts({
-    'poppins-regular': require('./assets/fonts/Poppins-Regular.ttf'),
-    'poppins-bold': require('./assets/fonts/Poppins-Bold.ttf'),
-    'poppins-semiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
-    'poppins-medium': require('./assets/fonts/Poppins-Medium.ttf'),
-    'rubik-regular': require('./assets/fonts/Rubik-Regular.ttf'),
-  });
+  const [appReady, setAppReady] = useState(false);
+  const [storedUserToken, setStoredUserToken] = useState();
 
-  if (!loaded) {
+  const checkLoginUserToken = () => {
+    AsyncStorage
+      .getItem('userToken')
+      .then((result) => {
+        if (result !== null) {
+          setStoredUserToken(JSON.parse(result));
+        } else {
+          setStoredUserToken(null);
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
+  if (!appReady) {
     return (
-      null
+      <AppLoading
+        startAsync={checkLoginUserToken}
+        onFinish={() => setAppReady(true)}
+        onError={console.warn}
+      />
     );
   }
-
   return (
-    <NavigationContainer>
-      <RootNavigator />
-    </NavigationContainer>
+    <AuthContext.Provider value={{ storedUserToken, setStoredUserToken }}>
+      <AuthNavigator />
+    </AuthContext.Provider>
   );
 }

@@ -1,14 +1,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import SignInScreen from '../screens/SignIn';
-import SignUpScreen from '../screens/SignUp';
 import PelatihanScreen from '../screens/Pelatihan';
 import CourseScreen from '../screens/Course';
 import DetailCourseScreen from '../screens/DetailCourse';
 import MateriSilabusScreen from '../screens/MateriSilabus';
 import QuizScreen from '../screens/Quiz';
 import FinishQuizScreen from '../screens/FinishQuiz';
-import OnboardingScreen from '../screens/Onboarding';
 import DrawerNavigator from './DrawerNavigator';
 import ButtonBack from '../components/ButtonBack';
 
@@ -25,7 +22,7 @@ const optionsHeader = {
   headerLeft: () => <ButtonBack />,
 };
 
-const RootStack = () => (
+const AppNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="Drawer"
@@ -33,18 +30,6 @@ const RootStack = () => (
       options={{
         headerShown: false,
       }}
-    />
-    <Stack.Screen
-      name="Sign In"
-      component={SignInScreen}
-      options={{
-        headerShown: false,
-      }}
-    />
-    <Stack.Screen
-      name="Sign Up"
-      component={SignUpScreen}
-      options={optionsHeader}
     />
     <Stack.Screen
       name="Pelatihan"
@@ -76,8 +61,7 @@ const RootStack = () => (
       component={FinishQuizScreen}
       options={optionsHeader}
     />
-    <Stack.Screen name="Onboarding" component={OnboardingScreen} />
   </Stack.Navigator>
 );
 
-export default RootStack;
+export default AppNavigator;

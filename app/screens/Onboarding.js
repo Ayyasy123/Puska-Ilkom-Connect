@@ -3,6 +3,7 @@ import {
   View, Text, Image, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import OnboardingScreen from 'react-native-onboarding-swiper';
+import { useNavigation } from '@react-navigation/native';
 import global from '../../assets/styles/global';
 
 const Dot = ({ selected }) => (
@@ -26,14 +27,18 @@ const Next = ({ ...props }) => (
     <Text style={styles.buttonText}>Next</Text>
   </TouchableOpacity>
 );
-const Done = ({ ...props }) => (
-  <TouchableOpacity
-    style={styles.button}
-    {...props}
-  >
-    <Text style={styles.buttonText}>Let's Start!</Text>
-  </TouchableOpacity>
-);
+const Done = ({ ...props }) => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity
+      style={styles.button}
+      {...props}
+      onPress={() => navigation.replace('Sign In')}
+    >
+      <Text style={styles.buttonText}>Let's Start!</Text>
+    </TouchableOpacity>
+  );
+};
 const Onboarding = () => (
   <OnboardingScreen
     showSkip={false}

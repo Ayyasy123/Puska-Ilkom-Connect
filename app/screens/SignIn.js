@@ -2,77 +2,63 @@ import React, { useState, useContext } from 'react';
 import {
   Text, View, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator, Image,
 } from 'react-native';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
-// import axios from 'axios';
+import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 import global from '../../assets/styles/global';
 
-// import { AuthContext } from '../context';
+import { AuthContext } from '../context';
 
 const SignIn = ({ navigation }) => {
-  const [message, setMessage] = useState();
-  const [messageType, setMessageType] = useState();
-  //   const { storedUserToken, setStoredUserToken } = useContext(AuthContext);
+  // const [message, setMessage] = useState();
+  // const [messageType, setMessageType] = useState();
+  const { storedUserToken, setStoredUserToken } = useContext(AuthContext);
 
   const [isHide, setIsHide] = useState(true);
   const [textShow, setTextShow] = useState(false);
 
   const handleLogin = (credentials, setSubmitting) => {
     // handleMessage(null);
-
-    // const url = 'http://10.0.2.2:5000/login';
-    // axios
-    //   .post(url, credentials)
-    //   .then((response) => {
-    //     const result = response.data;
-    //     const { message, status, data } = result;
-    //     if (status !== 'SUCCESS') {
-    //       handleMessage(message, status);
-    //     } else {
-    //       persistLogin(data, credentials, message, status);
-    //     }
-    //     setSubmitting(false);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setSubmitting(false);
-    //   });
+    const url = 'https://reqres.in/api/login';
+    axios
+      .post(url, credentials)
+      .then((response) => {
+        const token = response.data;
+        // const { message, status, data } = result;
+        if (!token) {
+          // handleMessage(message, status);
+          console.log('Tidak dapat login');
+        } else {
+          console.log(token);
+          persistLogin(token);
+        }
+        setSubmitting(false);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setSubmitting(false);
+      });
   };
 
-  //   const handleMessage = (message, type = 'FAILED') => {
-  //     setMessage(message);
-  //     setMessageType(type);
-  //   };
+  // const handleMessage = (message, type = 'FAILED') => {
+  //   setMessage(message);
+  //   setMessageType(type);
+  // };
 
-  //   const persistLogin = (credentials, passwords, message, status) => {
-  //     AsyncStorage
-  //       .setItem('userToken', JSON.stringify(credentials))
-  //       .then(() => {
-  //         handleMessage(message, status);
-  //         setStoredUserToken(credentials);
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //         handleMessage('Persisting login failed');
-  //       });
-
-  //     auth
-  //       .signInWithEmailAndPassword(credentials.email, passwords.password)
-  //       .then(() => {
-  //         console.log('User signed in!');
-  //       })
-  //       .catch((error) => {
-  //         Alert.alert(error.message);
-  //       });
-
-  //     const update = {
-  //       displayName: credentials.name,
-  //       photoURL: credentials.avatar ? `https://elabsupnvj.my.id/laravel/storage/app/public/images/${credentials.avatar}` : 'https://www.jobstreet.co.id/en/cms/employer/wp-content/plugins/all-in-one-seo-pack/images/default-user-image.png',
-  //     };
-  //     auth.currentUser.updateProfile(update);
-  //   };
+  const persistLogin = (credentials) => {
+    AsyncStorage
+      .setItem('userToken', JSON.stringify(credentials))
+      .then(() => {
+        // handleMessage(message, status);
+        setStoredUserToken(credentials);
+      })
+      .catch((error) => {
+        console.log(error);
+        // handleMessage('Persisting login failed');
+      });
+  };
 
   return (
     <KeyboardAvoidingWrapper>

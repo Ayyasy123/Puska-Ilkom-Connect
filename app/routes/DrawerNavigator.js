@@ -14,6 +14,7 @@ import MyCertificateScreen from '../screens/MyCertificate';
 import TransactionHistoryScreen from '../screens/TransactionHistory';
 import global from '../../assets/styles/global';
 import ButtonBack from '../components/ButtonBack';
+import ButtonDrawer from '../components/ButtonDrawer';
 
 const Drawer = createDrawerNavigator();
 const HomeStack = createStackNavigator();
@@ -33,6 +34,7 @@ const optionsHeader = {
     elevation: 0,
   },
   headerLeft: () => <ButtonBack />,
+  headerRight: () => <ButtonDrawer />,
 };
 
 const Home = () => (
