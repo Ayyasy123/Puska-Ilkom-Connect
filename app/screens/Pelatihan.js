@@ -22,7 +22,7 @@ const Pelatihan = ({ navigation }) => {
   const renderInner = () => (
     <View style={styles.panel}>
       <Text style={[global.titleText, { color: '#1C335E', marginBottom: 10 }]}>Level</Text>
-      <View style={{ marginBottom: 20 }}>
+      <View style={{ marginBottom: 40 }}>
         <TouchableOpacity
           style={{ flexDirection: 'row', alignItems: 'center' }}
           onPress={() => setChecked('all')}
@@ -130,53 +130,52 @@ const Pelatihan = ({ navigation }) => {
           },
         ]}
       />
-      <ScrollView
-        scrollEnabled={!isShow}
-        style={{ backgroundColor: 'white' }}
-      >
-        <View style={global.container}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 40 }}>
-            <View style={[global.containerInput, {
-              backgroundColor: '#EFF0F0',
-              borderWidth: 0,
-              marginBottom: 0,
-              width: global.containerInput.width - 60,
-              flexDirection: 'row',
-            }]}
-            >
-              <TouchableOpacity
-                onPress={() => {}}
-                style={{ alignSelf: 'center', marginLeft: 16 }}
-              >
-                <Ionicons name="md-search-outline" size={24} color="#6B7075" />
-              </TouchableOpacity>
-              <TextInput
-                inlineImageLeft="search_icon"
-                style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
-                placeholder="Find Courses....."
-                onChangeText={setFind}
-                value={find}
-              />
-            </View>
+      <View style={global.container}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+          <View style={[global.containerInput, {
+            backgroundColor: '#EFF0F0',
+            borderWidth: 0,
+            marginBottom: 0,
+            width: global.containerInput.width - 60,
+            flexDirection: 'row',
+          }]}
+          >
             <TouchableOpacity
-              onPress={() => {
-                sheetRef.current.snapTo(0);
-              }}
-              style={{ alignItems: 'center', marginRight: 2 }}
+              onPress={() => {}}
+              style={{ alignSelf: 'center', marginLeft: 16 }}
             >
-              <FontAwesome
-                name="sliders"
-                size={24}
-                color="white"
-                style={{
-                  backgroundColor: '#335CAB',
-                  transform: [{ rotate: '-90deg' }],
-                  padding: 13,
-                  borderRadius: 10,
-                }}
-              />
+              <Ionicons name="md-search-outline" size={24} color="#6B7075" />
             </TouchableOpacity>
+            <TextInput
+              inlineImageLeft="search_icon"
+              style={[global.textInput, { paddingHorizontal: 0, paddingLeft: 16, paddingRight: 60 }]}
+              placeholder="Find Courses....."
+              onChangeText={setFind}
+              value={find}
+            />
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              sheetRef.current.snapTo(0);
+            }}
+            style={{ alignItems: 'center', marginRight: 2 }}
+          >
+            <FontAwesome
+              name="sliders"
+              size={24}
+              color="white"
+              style={{
+                backgroundColor: '#335CAB',
+                transform: [{ rotate: '-90deg' }],
+                padding: 13,
+                borderRadius: 10,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+        >
           <View style={{ marginBottom: 20 }}>
             <View style={{
               flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
@@ -207,7 +206,7 @@ const Pelatihan = ({ navigation }) => {
             <CardPremiumCourse />
             <CardPremiumCourse />
           </View>
-          <View style={{ marginBottom: 40 }}>
+          <View>
             <View style={{
               flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10,
             }}
@@ -222,8 +221,8 @@ const Pelatihan = ({ navigation }) => {
             <CardLiveCourse />
             <CardLiveCourse />
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     </>
   );
 };

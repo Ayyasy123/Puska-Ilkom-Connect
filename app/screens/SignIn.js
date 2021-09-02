@@ -63,7 +63,11 @@ const SignIn = ({ navigation }) => {
   return (
     <KeyboardAvoidingWrapper>
       <View style={global.container}>
-        <Image source={require('../../assets/images/SignIn.png')} style={global.image} />
+        <Image
+          source={require('../../assets/images/SignIn.png')}
+          style={[global.image, { marginVertical: 25 }]}
+          resizeMode="contain"
+        />
         <Text style={styles.textSignIn}>Sign In</Text>
         <Formik
           initialValues={{ username: '', password: '' }}

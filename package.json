@@ -10,6 +10,8 @@
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
     "@react-native-async-storage/async-storage": "^1.15.7",
+    "@react-native-community/datetimepicker": "3.5.2",
+    "@react-native-picker/picker": "1.16.1",
     "@react-navigation/drawer": "^6.1.4",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
@@ -25,6 +27,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-gesture-handler": "~1.10.2",
+    "react-native-modal-datetime-picker": "^11.0.0",
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-paper": "^4.9.2",
     "react-native-reanimated": "~2.2.0",

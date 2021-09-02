@@ -10,11 +10,7 @@ const FinishQuiz = () => (
   <View style={[global.container, { justifyContent: 'center', alignItems: 'center' }]}>
     <Image
       source={require('../../assets/images/finish_quiz.png')}
-      style={{
-        width: '100%',
-        height: Math.round(width * 9 / 16),
-        marginBottom: 30,
-      }}
+      style={[global.image, { marginBottom: 30 }]}
       resizeMode="contain"
     />
     <Text style={[global.sb18Text, { marginBottom: 10 }]}>Congratulations!</Text>

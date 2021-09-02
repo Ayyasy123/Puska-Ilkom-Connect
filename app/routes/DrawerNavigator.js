@@ -58,9 +58,9 @@ const Profile = () => (
 const Webinar = () => (
   <WebinarStack.Navigator>
     <WebinarStack.Screen
-      name="Webinar"
+      name="Latest Webinar"
       component={WebinarScreen}
-      options={optionsHeader}
+      options={{ ...optionsHeader, title: 'Webinar' }}
     />
   </WebinarStack.Navigator>
 );

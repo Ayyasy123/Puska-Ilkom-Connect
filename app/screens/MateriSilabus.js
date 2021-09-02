@@ -22,10 +22,7 @@ const MateriSilabus = ({ navigation }) => {
           <View style={{ marginBottom: 20 }}>
             <Text style={[global.sb12Text, { fontSize: 14, color: '#130F26' }]}>Video</Text>
             <Image
-              style={{
-                width: '100%',
-                height: Math.round(width * 9 / 16),
-              }}
+              style={global.image}
               resizeMode="contain"
               source={require('../../assets/images/video_silabus.png')}
             />

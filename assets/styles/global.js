@@ -44,8 +44,7 @@ const global = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 210,
-    marginVertical: 35,
+    height: Math.round(width * 9 / 16),
   },
   containerButton: {
     width: width - 50,
