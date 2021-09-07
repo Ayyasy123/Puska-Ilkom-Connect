@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import PelatihanScreen from '../screens/Pelatihan';
 import WebinarScreen from '../screens/Webinar';
 import DetailWebinarScreen from '../screens/DetailWebinar';
+import PaymentScreen from '../screens/Payment';
 import CourseScreen from '../screens/Course';
 import DetailCourseScreen from '../screens/DetailCourse';
 import MateriSilabusScreen from '../screens/MateriSilabus';
@@ -71,6 +72,11 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Detail Webinar"
       component={DetailWebinarScreen}
+      options={optionsHeader}
+    />
+    <Stack.Screen
+      name="Payment"
+      component={PaymentScreen}
       options={optionsHeader}
     />
   </Stack.Navigator>

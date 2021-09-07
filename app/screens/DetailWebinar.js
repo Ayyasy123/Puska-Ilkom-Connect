@@ -5,7 +5,7 @@ import {
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import global from '../../assets/styles/global';
 
-const DetailWebinar = () => {
+const DetailWebinar = ({ navigation }) => {
   const [show, setShow] = useState(false);
   return (
     <ScrollView style={{ backgroundColor: 'white' }}>
@@ -90,7 +90,7 @@ const DetailWebinar = () => {
               backgroundColor: 'white', marginHorizontal: 20, padding: 30, borderRadius: 16, elevation: 5,
             }}
             >
-              <Text style={[global.reg12Text, {fontSize: 14, textAlign: 'center' }]}>Would you like to join a webinar?</Text>
+              <Text style={[global.reg12Text, { fontSize: 14, textAlign: 'center' }]}>Would you like to join a webinar?</Text>
               <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
                 <TouchableOpacity
                   style={[global.containerButton, { width: '48%', backgroundColor: '#EFF0F0' }]}
@@ -105,7 +105,7 @@ const DetailWebinar = () => {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[global.containerButton, { width: '48%' }]}
-                  onPress={() => setShow(false)}
+                  onPress={() => { setShow(false); navigation.navigate('Payment'); }}
                 >
                   <Text style={[
                     global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
