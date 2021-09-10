@@ -8,20 +8,28 @@ import global from '../../assets/styles/global';
 const DetailWebinar = ({ navigation }) => {
   const [show, setShow] = useState(false);
   return (
-    <ScrollView style={{ backgroundColor: 'white' }}>
-      <View style={global.container}>
-        <Image source={require('../../assets/images/banner_webinar.png')} style={[global.image, { marginHorizontal: -20 }]} />
-        <Text style={[global.med12Text, { color: '#4285F4' }]}>Programming</Text>
-        <Text style={[global.sb12Text, { color: '#222425', fontSize: 14 }]}>
-          Dasar Pemrograman Python
-        </Text>
-        <View style={{ flexDirection: 'row' }}>
-          <MaterialCommunityIcons name="calendar-blank" size={18} color="#130F26" style={{ marginHorizontal: 5 }} />
-          <Text style={[global.reg12Text, { color: '#130F26' }]}>Selasa, 03 Agustus 2021</Text>
+    <View style={[global.container, { paddingVertical: 0 }]}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+      >
+        <Image source={require('../../assets/images/banner_webinar.png')} style={global.image} />
+        <View style={{ marginVertical: 15 }}>
+          <Text style={[global.med12Text, { color: '#4285F4' }]}>Programming</Text>
+          <Text style={[global.sb12Text, { color: '#222425', fontSize: 14 }]}>
+            Dasar Pemrograman Python
+          </Text>
+          <View style={{ flexDirection: 'row' }}>
+            <MaterialCommunityIcons name="calendar-blank" size={18} color="#130F26" style={{ marginHorizontal: 5 }} />
+            <Text style={[global.reg12Text, { color: '#130F26' }]}>
+              <Text style={global.sb12Text}>Selasa, </Text>
+              03 Agustus 2021
+            </Text>
+          </View>
+          <Text style={[global.reg12Text, { color: '#130F26', paddingRight: 25 }]}>
+            <Text style={global.sb12Text}>Speaker: </Text>
+            Aditya Wisnugraha, S.Si (Researcher Bisa AI)
+          </Text>
         </View>
-        <Text style={[global.reg12Text, { color: '#130F26', paddingRight: 25 }]}>
-          Speaker: Aditya Wisnugraha, S.Si (Researcher Bisa AI)
-        </Text>
         <View style={{
           backgroundColor: '#F5F5F5',
           width: '100%',
@@ -62,65 +70,65 @@ const DetailWebinar = ({ navigation }) => {
             {'\n'}
           </Text>
         </View>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-          <Text style={[global.reg12Text, { fontSize: 14 }]}>Total :</Text>
-          <Text style={[global.bold12Text, { fontSize: 14 }]}>Rp 1.000.000</Text>
-        </View>
-        <TouchableOpacity
-          style={[global.containerButton, { marginVertical: 20 }]}
-          onPress={() => setShow(true)}
+      </ScrollView>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingVertical: 15 }}>
+        <Text style={[global.reg12Text, { fontSize: 14 }]}>Total :</Text>
+        <Text style={[global.bold12Text, { fontSize: 14 }]}>Rp 1.000.000</Text>
+      </View>
+      <TouchableOpacity
+        style={global.containerButton}
+        onPress={() => setShow(true)}
+      >
+        <Text style={[
+          global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
+        ]}
         >
-          <Text style={[
-            global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
-          ]}
-          >
-            Next
-          </Text>
-        </TouchableOpacity>
-        <Modal
-          transparent
-          visible={show}
-          animationType="fade"
+          Next
+        </Text>
+      </TouchableOpacity>
+      <Modal
+        transparent
+        visible={show}
+        animationType="fade"
+      >
+        <View style={{
+          backgroundColor: '#000000aa', flex: 1, justifyContent: 'center',
+        }}
         >
           <View style={{
-            backgroundColor: '#000000aa', flex: 1, justifyContent: 'center',
+            backgroundColor: 'white', marginHorizontal: 20, padding: 30, borderRadius: 16, elevation: 5,
           }}
           >
-            <View style={{
-              backgroundColor: 'white', marginHorizontal: 20, padding: 30, borderRadius: 16, elevation: 5,
-            }}
-            >
-              <Text style={[global.reg12Text, { fontSize: 14, textAlign: 'center' }]}>Would you like to join a webinar?</Text>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
-                <TouchableOpacity
-                  style={[global.containerButton, { width: '48%', backgroundColor: '#EFF0F0' }]}
-                  onPress={() => setShow(false)}
+            <Text style={[global.reg12Text, { fontSize: 14, textAlign: 'center' }]}>Would you like to join a webinar?</Text>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 30 }}>
+              <TouchableOpacity
+                style={[global.containerButton, { width: '48%', backgroundColor: '#EFF0F0' }]}
+                onPress={() => setShow(false)}
+              >
+                <Text style={[
+                  global.titleText, { fontSize: 14, color: '#335CAB', textAlign: 'center' },
+                ]}
                 >
-                  <Text style={[
-                    global.titleText, { fontSize: 14, color: '#335CAB', textAlign: 'center' },
-                  ]}
-                  >
-                    No
-                  </Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[global.containerButton, { width: '48%' }]}
-                  onPress={() => { setShow(false); navigation.navigate('Payment'); }}
+                  No
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[global.containerButton, { width: '48%' }]}
+                onPress={() => { setShow(false); navigation.navigate('Payment'); }}
+              >
+                <Text style={[
+                  global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
+                ]}
                 >
-                  <Text style={[
-                    global.titleText, { fontSize: 14, color: 'white', textAlign: 'center' },
-                  ]}
-                  >
-                    Yes
-                  </Text>
-                </TouchableOpacity>
-              </View>
+                  Yes
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
-        </Modal>
-      </View>
+        </View>
+      </Modal>
+    </View>
 
-    </ScrollView>
   );
 };
 

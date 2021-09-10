@@ -130,8 +130,11 @@ const Pelatihan = ({ navigation }) => {
           },
         ]}
       />
-      <View style={global.container}>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 }}>
+      <View style={[global.container, { paddingVertical: 0 }]}>
+        <View style={{
+          flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20, paddingTop: 80,
+        }}
+        >
           <View style={[global.containerInput, {
             backgroundColor: '#EFF0F0',
             borderWidth: 0,

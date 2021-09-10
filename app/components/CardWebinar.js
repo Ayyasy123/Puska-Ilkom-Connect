@@ -21,7 +21,7 @@ const CardWebinar = () => {
       <View style={{ width: '50%', paddingRight: 5 }}>
         <Image
           source={require('../../assets/images/banner_webinar.png')}
-          style={[global.image, { borderRadius: 2, height: 150 }]}
+          style={[global.image, { borderRadius: 16, height: 150 }]}
           resizeMode="contain"
         />
         <View style={{ flexDirection: 'row', marginTop: 5 }}>

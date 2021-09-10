@@ -37,7 +37,7 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Pelatihan"
       component={PelatihanScreen}
-      options={optionsHeader}
+      options={{ ...optionsHeader, headerTransparent: true }}
     />
     <Stack.Screen
       name="Course"
@@ -67,7 +67,7 @@ const AppNavigator = () => (
     <Stack.Screen
       name="Webinar"
       component={WebinarScreen}
-      options={optionsHeader}
+      options={{ ...optionsHeader, headerTransparent: true }}
     />
     <Stack.Screen
       name="Detail Webinar"

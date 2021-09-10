@@ -8,7 +8,7 @@ import CardWebinar from '../components/CardWebinar';
 const MyWebinar = () => {
   const [active, setActive] = useState('left');
   return (
-    <View style={global.container}>
+    <View style={[global.container, { paddingVertical: 0 }]}>
       <View style={{
         backgroundColor: '#EFF0F0',
         flexDirection: 'row',
